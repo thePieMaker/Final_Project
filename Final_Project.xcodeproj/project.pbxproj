@@ -20,6 +20,7 @@
 		AED8A6F11CC12F7E004F6526 /* Outgoing.m in Sources */ = {isa = PBXBuildFile; fileRef = AED8A6EF1CC12F7E004F6526 /* Outgoing.m */; };
 		AED8A6F41CC12FF0004F6526 /* OutgoingHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = AED8A6F31CC12FF0004F6526 /* OutgoingHolder.m */; };
 		AED8A6F71CC130CB004F6526 /* AddAnItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AED8A6F61CC130CB004F6526 /* AddAnItemViewController.m */; };
+		AED8A6FA1CC141AE004F6526 /* CalcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AED8A6F91CC141AE004F6526 /* CalcViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		AED8A6F31CC12FF0004F6526 /* OutgoingHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutgoingHolder.m; sourceTree = "<group>"; };
 		AED8A6F51CC130CB004F6526 /* AddAnItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAnItemViewController.h; sourceTree = "<group>"; };
 		AED8A6F61CC130CB004F6526 /* AddAnItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAnItemViewController.m; sourceTree = "<group>"; };
+		AED8A6F81CC141AE004F6526 /* CalcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalcViewController.h; sourceTree = "<group>"; };
+		AED8A6F91CC141AE004F6526 /* CalcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalcViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,8 @@
 				AED8A6D81CC12B75004F6526 /* DetailViewController.h */,
 				AED8A6D91CC12B75004F6526 /* DetailViewController.m */,
 				AED8A6DB1CC12B75004F6526 /* Main.storyboard */,
+				AED8A6F81CC141AE004F6526 /* CalcViewController.h */,
+				AED8A6F91CC141AE004F6526 /* CalcViewController.m */,
 				AED8A6E91CC12ECA004F6526 /* BudgetModel.xcdatamodeld */,
 				AED8A6EC1CC12F7E004F6526 /* Outgoing+CoreDataProperties.h */,
 				AED8A6ED1CC12F7E004F6526 /* Outgoing+CoreDataProperties.m */,
@@ -184,6 +189,7 @@
 				AED8A6DA1CC12B75004F6526 /* DetailViewController.m in Sources */,
 				AED8A6F11CC12F7E004F6526 /* Outgoing.m in Sources */,
 				AED8A6D71CC12B75004F6526 /* MasterViewController.m in Sources */,
+				AED8A6FA1CC141AE004F6526 /* CalcViewController.m in Sources */,
 				AED8A6EB1CC12ECA004F6526 /* BudgetModel.xcdatamodeld in Sources */,
 				AED8A6D41CC12B75004F6526 /* Final_Project.xcdatamodeld in Sources */,
 				AED8A6F41CC12FF0004F6526 /* OutgoingHolder.m in Sources */,
