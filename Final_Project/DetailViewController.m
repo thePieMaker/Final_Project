@@ -29,7 +29,9 @@
     // Update the user interface for the detail item.
     if (self.detailItem) {
         self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"date"] description];
-    }
+        self.lblTwo.text = [[self.detailItem valueForKey:@"transactionDesc"] description];
+        self.lblThree.text = [[self.detailItem valueForKey:@"category"] description];
+        self.lblFour.text = [[self.detailItem valueForKey:@"transactionType"] description];    }
 }
 
 - (void)viewDidLoad {

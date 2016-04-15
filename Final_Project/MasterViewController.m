@@ -53,7 +53,11 @@
     
     // If appropriate, configure the new managed object.
     // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [myOutgoingObject setValue:[NSDate date] forKey:@"date"];  //!! here
+    [myOutgoingObject setValue:[NSDate date] forKey:@"date"];
+    //!! here
+    [myOutgoingObject setValue:self.title forKey:@"transactionDesc"];
+    [myOutgoingObject setValue:self.title forKey:@"transactionType"];
+    [myOutgoingObject setValue:self.title forKey:@"category"];
     
     // Save the context.
     myOutgoingObject.category = item.category;
