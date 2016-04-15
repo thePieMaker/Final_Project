@@ -8,9 +8,11 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "OutgoingHolder.h"
+#import "Outgoing.h"
 
 @interface MasterViewController ()
-
+@property (nonatomic, strong) AddAnItemViewController *addItemVC;
 @end
 
 @implementation MasterViewController
@@ -19,10 +21,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    
+    //the default button
+    //    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    //    self.navigationItem.rightBarButtonItem = addButton;
+    
+    //we'll make our own button and segue to our addition page
+    
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+}
+
+-(void)passDataBack:(OutgoingHolder *)item{
+    [self insertNewObject:item];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -35,16 +46,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender {
+- (void)insertNewObject:(OutgoingHolder*)item {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-        
+    Outgoing *myOutgoingObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    
     // If appropriate, configure the new managed object.
     // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
-        
+    [myOutgoingObject setValue:[NSDate date] forKey:@"date"];  //!! here
+    
     // Save the context.
+    myOutgoingObject.category = item.category;
+    myOutgoingObject.transactionDesc = item.transactionDesc;
+    myOutgoingObject.date = item.date;
+    myOutgoingObject.transactionType = item.transactionType;
+    myOutgoingObject.amount = [NSNumber numberWithFloat:item.amount];
+    
     NSError *error = nil;
     if (![context save:&error]) {
         // Replace this implementation with code to handle the error appropriately.
@@ -57,13 +74,19 @@
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([[segue identifier] isEqualToString:@"showDetail"]) { //!!here
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
+    }
+    
+    if ([[segue identifier] isEqualToString:@"addItem"]) {  //if the segue is the one going to the item
+        self.addItemVC = segue.destinationViewController;
+        self.addItemVC.delegate = self;
+        
     }
 }
 
@@ -84,6 +107,19 @@
     return cell;
 }
 
+//add heading colors
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *v = (UITableViewHeaderFooterView *)view;
+    v.backgroundView.backgroundColor = [UIColor lightGrayColor];
+}
+
+//making a method for title headers
+-(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    id<NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo name];
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
@@ -93,7 +129,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
         [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
-            
+        
         NSError *error = nil;
         if (![context save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
@@ -104,9 +140,13 @@
     }
 }
 
+//here
+//sets the cell label text
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+    Outgoing *outgoingObj = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = outgoingObj.transactionDesc;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"$%.2f", [outgoingObj.amount floatValue]];
+    
 }
 
 #pragma mark - Fetched results controller
@@ -119,20 +159,20 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Outgoing" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];  //1:13
 
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"transactionType" cacheName:@"Master"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     

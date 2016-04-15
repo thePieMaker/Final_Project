@@ -15,6 +15,11 @@
 		AED8A6DD1CC12B75004F6526 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AED8A6DB1CC12B75004F6526 /* Main.storyboard */; };
 		AED8A6DF1CC12B75004F6526 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AED8A6DE1CC12B75004F6526 /* Assets.xcassets */; };
 		AED8A6E21CC12B75004F6526 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AED8A6E01CC12B75004F6526 /* LaunchScreen.storyboard */; };
+		AED8A6EB1CC12ECA004F6526 /* BudgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AED8A6E91CC12ECA004F6526 /* BudgetModel.xcdatamodeld */; };
+		AED8A6F01CC12F7E004F6526 /* Outgoing+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AED8A6ED1CC12F7E004F6526 /* Outgoing+CoreDataProperties.m */; };
+		AED8A6F11CC12F7E004F6526 /* Outgoing.m in Sources */ = {isa = PBXBuildFile; fileRef = AED8A6EF1CC12F7E004F6526 /* Outgoing.m */; };
+		AED8A6F41CC12FF0004F6526 /* OutgoingHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = AED8A6F31CC12FF0004F6526 /* OutgoingHolder.m */; };
+		AED8A6F71CC130CB004F6526 /* AddAnItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AED8A6F61CC130CB004F6526 /* AddAnItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,15 @@
 		AED8A6DE1CC12B75004F6526 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AED8A6E11CC12B75004F6526 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AED8A6E31CC12B75004F6526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AED8A6EA1CC12ECA004F6526 /* BudgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetModel.xcdatamodel; sourceTree = "<group>"; };
+		AED8A6EC1CC12F7E004F6526 /* Outgoing+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Outgoing+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AED8A6ED1CC12F7E004F6526 /* Outgoing+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Outgoing+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AED8A6EE1CC12F7E004F6526 /* Outgoing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outgoing.h; sourceTree = "<group>"; };
+		AED8A6EF1CC12F7E004F6526 /* Outgoing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outgoing.m; sourceTree = "<group>"; };
+		AED8A6F21CC12FF0004F6526 /* OutgoingHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutgoingHolder.h; sourceTree = "<group>"; };
+		AED8A6F31CC12FF0004F6526 /* OutgoingHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutgoingHolder.m; sourceTree = "<group>"; };
+		AED8A6F51CC130CB004F6526 /* AddAnItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAnItemViewController.h; sourceTree = "<group>"; };
+		AED8A6F61CC130CB004F6526 /* AddAnItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAnItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +84,20 @@
 				AED8A6D81CC12B75004F6526 /* DetailViewController.h */,
 				AED8A6D91CC12B75004F6526 /* DetailViewController.m */,
 				AED8A6DB1CC12B75004F6526 /* Main.storyboard */,
+				AED8A6E91CC12ECA004F6526 /* BudgetModel.xcdatamodeld */,
+				AED8A6EC1CC12F7E004F6526 /* Outgoing+CoreDataProperties.h */,
+				AED8A6ED1CC12F7E004F6526 /* Outgoing+CoreDataProperties.m */,
+				AED8A6EE1CC12F7E004F6526 /* Outgoing.h */,
+				AED8A6EF1CC12F7E004F6526 /* Outgoing.m */,
 				AED8A6DE1CC12B75004F6526 /* Assets.xcassets */,
 				AED8A6E01CC12B75004F6526 /* LaunchScreen.storyboard */,
 				AED8A6E31CC12B75004F6526 /* Info.plist */,
 				AED8A6D21CC12B75004F6526 /* Final_Project.xcdatamodeld */,
 				AED8A6CC1CC12B74004F6526 /* Supporting Files */,
+				AED8A6F51CC130CB004F6526 /* AddAnItemViewController.h */,
+				AED8A6F61CC130CB004F6526 /* AddAnItemViewController.m */,
+				AED8A6F21CC12FF0004F6526 /* OutgoingHolder.h */,
+				AED8A6F31CC12FF0004F6526 /* OutgoingHolder.m */,
 			);
 			path = Final_Project;
 			sourceTree = "<group>";
@@ -157,11 +180,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AED8A6F71CC130CB004F6526 /* AddAnItemViewController.m in Sources */,
 				AED8A6DA1CC12B75004F6526 /* DetailViewController.m in Sources */,
+				AED8A6F11CC12F7E004F6526 /* Outgoing.m in Sources */,
 				AED8A6D71CC12B75004F6526 /* MasterViewController.m in Sources */,
+				AED8A6EB1CC12ECA004F6526 /* BudgetModel.xcdatamodeld in Sources */,
 				AED8A6D41CC12B75004F6526 /* Final_Project.xcdatamodeld in Sources */,
+				AED8A6F41CC12FF0004F6526 /* OutgoingHolder.m in Sources */,
 				AED8A6D11CC12B75004F6526 /* AppDelegate.m in Sources */,
 				AED8A6CE1CC12B74004F6526 /* main.m in Sources */,
+				AED8A6F01CC12F7E004F6526 /* Outgoing+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +347,16 @@
 			);
 			currentVersion = AED8A6D31CC12B75004F6526 /* Final_Project.xcdatamodel */;
 			path = Final_Project.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		AED8A6E91CC12ECA004F6526 /* BudgetModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AED8A6EA1CC12ECA004F6526 /* BudgetModel.xcdatamodel */,
+			);
+			currentVersion = AED8A6EA1CC12ECA004F6526 /* BudgetModel.xcdatamodel */;
+			path = BudgetModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "AddAnItemViewController.h"
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate, ItemDataDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
@@ -20,4 +21,5 @@
 
 
 @end
+
 
